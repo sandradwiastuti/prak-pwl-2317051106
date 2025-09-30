@@ -15,10 +15,10 @@
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link px-3" href="/user">Daftar User</a>
+          <a class="nav-link px-3" href="/user">List User</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-3" href="/user/create">Tambah User</a>
+          <a class="nav-link px-3" href="/user/create">Add User</a>
         </li>
       </ul>
     </div>

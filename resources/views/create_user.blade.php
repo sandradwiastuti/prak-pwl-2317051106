@@ -41,7 +41,7 @@
                     <!-- Tombol -->
                     <div class="d-flex justify-content-end">
                         <button type="reset" class="btn btn-outline-secondary me-2">Reset</button>
-                        <button type="submit" class="btn btn-primary">💾 Simpan</button>
+                        <button type="submit" class="btn btn-primary">💾 Submit</button>
                     </div>
                 </form>
             </div>
