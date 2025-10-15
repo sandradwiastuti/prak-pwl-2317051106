@@ -15,6 +15,12 @@
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
+          <a class="nav-link px-3" href="/matakuliah">List Mata Kuliah</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="/matakuliah/create">Add Mata Kuliah</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link px-3" href="/user">List User</a>
         </li>
         <li class="nav-item">
