@@ -9,15 +9,22 @@
                 <h4 class="mb-0">Daftar User</h4>
             </div>
             <div class="card-body p-4">
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="{{ route('user.create') }}" class="btn btn-success fw-semibold"
+                        style="background: linear-gradient(90deg, #db7bc3ff, #062452ff); border-radius: 8px;">
+                        ➕ Tambah User
+                    </a>
+                </div>
+
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped align-middle text-center rounded-3 overflow-hidden table-hover">
                         <thead style="background: linear-gradient(90deg, #db7bc3ff, #062452ff); color: white;">
                             <tr>
-                                <th>Id</th>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>NPM</th>
                                 <th>Kelas</th>
-                                <th>Aksi</th>
+                                <th width="160px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,13 +35,24 @@
                                     <td>{{ $user->npm }}</td>
                                     <td>{{ $user->nama_kelas }}</td>
                                     <td>
-                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Yakin hapus user ini?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                                🗑 Hapus
-                                            </button>
-                                        </form>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <!-- Tombol Edit -->
+                                            <a href="{{ route('user.edit', $user->id) }}"
+                                             class="btn btn-sm text-white" 
+                                               style="background-color: #4b8bf5; border-radius: 8px;">
+                                                ✏️ Edit
+                                            </a>
+
+                                            <!-- Tombol Hapus -->
+                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST" 
+                                                  onsubmit="return confirm('Yakin hapus user ini?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger" style="border-radius: 8px;">
+                                                    🗑 Hapus
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
@@ -73,13 +91,22 @@
     }
 
     .table-hover tbody tr:hover {
-        background-color: #fbe0ef; /* highlight pink lembut */
+        background-color: #fbe0ef;
         transition: 0.3s;
     }
 
-    .btn-danger {
+    .btn {
         border-radius: 8px;
         font-weight: 600;
+    }
+
+    .btn-warning {
+        background-color: #f59e0b;
+        border: none;
+    }
+
+    .btn-warning:hover {
+        background-color: #d97706;
     }
 </style>
 @endsection

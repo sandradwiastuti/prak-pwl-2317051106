@@ -12,6 +12,10 @@ class UserModel extends Model
     protected $table = 'user';
     protected $guarded = ['id'];
 
+    protected $keyType = 'string';
+public $incrementing = false;
+
+
     protected $fillable = ['nama', 'npm', 'kelas_id'];
 
 
@@ -26,4 +30,9 @@ class UserModel extends Model
             ->select('user.*', 'kelas.nama_kelas as nama_kelas')
             ->get();
     }
+
+    
+
+
+
 }
