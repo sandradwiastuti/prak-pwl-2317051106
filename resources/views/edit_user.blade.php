@@ -9,7 +9,7 @@
                 <h4 class="mb-0">Edit User</h4>
             </div>
             <div class="card-body p-4">
-                <form action="{{ route('user.update', $user->id) }}" method="POST">
+                <form action="{{ route('user.update', $user->uuid) }}" method="POST">
                     @csrf
                     @method('PUT')
 
@@ -52,31 +52,15 @@
     </div>
 </div>
 
-{{-- Custom CSS --}}
 <style>
-    body {
-        background: #ffe4ec; /* pink soft pastel */
-    }
-
-    label {
-        color: #374151;
-        font-size: 0.95rem;
-    }
-
-    input, select {
-        border-radius: 10px !important;
-    }
-
-    .btn {
-        border-radius: 10px;
-        font-weight: 600;
-    }
-
+    body { background: #ffe4ec; }
+    label { color: #374151; font-size: 0.95rem; }
+    input, select { border-radius: 10px !important; }
+    .btn { border-radius: 10px; font-weight: 600; }
     .btn-primary {
         background: linear-gradient(90deg, #db2777, #be185d);
         border: none;
     }
-
     .btn-primary:hover {
         background: linear-gradient(90deg, #be185d, #9d174d);
         transform: translateY(-2px);

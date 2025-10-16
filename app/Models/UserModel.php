@@ -10,29 +10,26 @@ class UserModel extends Model
     use HasFactory;
 
     protected $table = 'user';
-    protected $guarded = ['id'];
-
+    protected $primaryKey = 'uuid'; // karena kamu pakai UUID
+    public $incrementing = false;
     protected $keyType = 'string';
-public $incrementing = false;
 
+    protected $fillable = [
+        'uuid',
+        'nama',
+        'npm',
+        'kelas_id',
+    ];
 
-    protected $fillable = ['nama', 'npm', 'kelas_id'];
-
-
+    // relasi ke tabel kelas
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'kelas_id');
     }
 
+    // ambil user + data kelas
     public function getUser()
     {
-        return $this->join('kelas', 'kelas.id', '=', 'user.kelas_id')
-            ->select('user.*', 'kelas.nama_kelas as nama_kelas')
-            ->get();
+        return self::with('kelas')->orderBy('created_at', 'asc')->get();
     }
-
-    
-
-
-
 }
