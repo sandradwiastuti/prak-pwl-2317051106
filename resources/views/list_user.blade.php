@@ -21,6 +21,7 @@
                         <thead style="background: linear-gradient(90deg, #db7bc3ff, #062452ff); color: white;">
                             <tr>
                                 <th>No</th>
+                                <th>UUID</th>
                                 <th>Nama</th>
                                 <th>NPM</th>
                                 <th>Kelas</th>
@@ -31,20 +32,24 @@
                             @forelse ($users as $user)
                                 <tr>
                                     <td class="fw-semibold">{{ $loop->iteration }}</td>
+                                    <td class="text-muted small">{{ $user->uuid }}</td>
                                     <td>{{ $user->nama }}</td>
                                     <td>{{ $user->npm }}</td>
-                                    <td>{{ $user->nama_kelas }}</td>
+
+                                    {{-- ✅ ini diperbaiki --}}
+                                    <td>{{ $user->kelas ? $user->kelas->nama_kelas : '-' }}</td>
+
                                     <td>
                                         <div class="d-flex justify-content-center gap-2">
                                             <!-- Tombol Edit -->
-                                            <a href="{{ route('user.edit', $user->id) }}"
-                                             class="btn btn-sm text-white" 
+                                            <a href="{{ route('user.edit', $user->uuid) }}"
+                                               class="btn btn-sm text-white" 
                                                style="background-color: #4b8bf5; border-radius: 8px;">
                                                 ✏️ Edit
                                             </a>
 
                                             <!-- Tombol Hapus -->
-                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST" 
+                                            <form action="{{ route('user.destroy', $user->uuid) }}" method="POST" 
                                                   onsubmit="return confirm('Yakin hapus user ini?');">
                                                 @csrf
                                                 @method('DELETE')
@@ -57,7 +62,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="text-muted fst-italic">Belum ada data pengguna</td>
+                                    <td colspan="6" class="text-muted fst-italic">Belum ada data pengguna</td>
                                 </tr>
                             @endforelse
                         </tbody>
